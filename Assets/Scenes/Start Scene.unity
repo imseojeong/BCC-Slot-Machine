@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 1519156975}
   - component: {fileID: 1519156978}
   m_Layer: 5
-  m_Name: Button
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1519156978}
         m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
-        m_MethodName: OnClickExit
+        m_MethodName: StartButtonClickHandler
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1519156973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b609b4073c0c41839236cc92c3e4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 20caac733b7218a4b8157fc9906866d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1543802109
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c34ae58053f1d940a20f67e0c6524c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 46fccb061592a0e46abde0d28d1e2cbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
