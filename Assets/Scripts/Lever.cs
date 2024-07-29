@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class Lever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -25,7 +26,13 @@ public class Lever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
     public void LeverClickHandler() {
-        Debug.Log("On Click");
+        StartCoroutine(Example2());
+    }
+    IEnumerator Example2()
+    {
+        GetComponent<Button>().interactable = false;
+        yield return new WaitForSeconds(1.5f);
+        GetComponent<Button>().interactable = true;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
