@@ -6,23 +6,32 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class ScoreButton : MonoBehaviour
+    , IPointerEnterHandler
+    , IPointerExitHandler
 {
-    public void ScoreButtonClickHandler()
+
+    public void InvokeScoreButtonClickHandler()
     {
-        SceneManager.LoadScene("Start Scene");
+        Invoke("ScoreButtonClickHandler", 0.59f);
+        gameObject.SetActive(false);
+    }
+
+    void ScoreButtonClickHandler()
+    {
+        SceneManager.LoadScene("Score Scene");
         Debug.Log("Click ScoreButton");
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter ScoreButton");
-        this.transform.Rotate(0, 0, 3);
+        this.transform.Rotate(0, 0, 2.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Exit StartButton");
-        this.transform.Rotate(0, 0, -3);
+        Debug.Log("Exit ScoreButton");
+        this.transform.Rotate(0, 0, -2.5f);
     }
 
     void Start()
