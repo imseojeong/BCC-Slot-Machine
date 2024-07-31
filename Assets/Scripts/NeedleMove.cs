@@ -5,18 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class NeedleMove : MonoBehaviour
 {
-    float rightMax = 6.68f; // 우로 이동가능한 (x)최대값
-    float leftMax = -7.68f; // 좌로 이동가능한 (x)최대값
-    float currentPositionX; // 현재 위치(x) 저장
-    float currentPositionY; // 현재 위치(y) 저장
-    float direction = 40.0f; // 이동 속도[숫자]+방향[부호] / 숫자 커질 수록 속도 빨라짐
+    float rightMax = 6.68f;
+    float leftMax = -7.68f;
+    float currentPositionX;
+    float currentPositionY;
+    float direction = 40.0f; // 이동 속도[숫자]+방향[+-부호] / 숫자 커질 수록 속도 빨라짐
 
     bool isMachineStopped = false;
     int currentRoomsScore = 0;
     int score = 0;
     int roundCount = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         currentPositionX = transform.localPosition.x;
@@ -24,41 +23,39 @@ public class NeedleMove : MonoBehaviour
         Debug.Log(gameObject.transform.parent.gameObject.transform.position);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(!isMachineStopped) {
             currentPositionX += Time.deltaTime * direction;
-            if (currentPositionX >= rightMax)
-            {
-                direction *= -1;
-                currentPositionX = rightMax;
-            }
-            //현재 위치(x)가 우로 이동가능한 (x)최대값보다 크거나 같다면
-            //이동속도+방향에 -1을 곱해 반전을 해주고 현재위치를 우로 이동가능한 (x)최대값으로 설정
-            else if (currentPositionX <= leftMax)
-            {
-                direction *= -1;
-                currentPositionX = leftMax;
-            }
-            //현재 위치(x)가 좌로 이동가능한 (x)최대값보다 크거나 같다면
-            //이동속도+방향에 -1을 곱해 반전을 해주고 현재위치를 좌로 이동가능한 (x)최대값으로 설정
-            transform.localPosition = new Vector3(currentPositionX, currentPositionY, 0);
-            //Needle의 위치를 계산된 현재위치로 처리
-            }
+        }
+        if (currentPositionX >= rightMax)
+        {
+            //currentPositionX가 rightMax보다 크거나 같다면
+            //이동 속도+방향에 -1을 곱해 이동 방향을 바꿔주고 현재위치를 rightMax으로 설정
+            direction *= -1;
+            currentPositionX = rightMax;
+        }
+        else if (currentPositionX <= leftMax)
+        {
+            //currentPositionX가 leftMax보다 크거나 같다면
+            //이동 속도+방향에 -1을 곱해 이동 방향을 바꿔주고 현재위치를 leftMax으로 설정
+            direction *= -1;
+            currentPositionX = leftMax;
+        }
+        //Needle의 위치를 계산된 현재위치로 처리
+        transform.localPosition = new Vector3(currentPositionX, currentPositionY, 0);
     }
 
     public void NeedleStopHandler()
     {
-        // 몇 번째 칸에 멈춰있는지 판별
+        isMachineStopped = true;
+
+        // 몇 번째 칸에 멈췄는지 판별하고 점수 매기기
         float entireRoom = rightMax - leftMax;
         float[] rooms = new float[5];
         for(int i=0; i<rooms.Length; i++) {
-            rooms[i] = leftMax + (i+1) * (entireRoom/5);
+            rooms[i] = leftMax + (i+1) * (entireRoom/rooms.Length);
         }
-        isMachineStopped = true;
-        // isMachineStopped = !isMachineStopped;
-        Debug.Log(currentPositionX);
         if(currentPositionX < rooms[0]) {
             Debug.Log("첫 번째 칸");
             currentRoomsScore = 0;
@@ -77,7 +74,7 @@ public class NeedleMove : MonoBehaviour
         }
         ScoreHandler(currentRoomsScore);
         roundCount++;
-        Debug.Log("Round "+roundCount);
+        Debug.Log("Round " + roundCount);
         StartCoroutine(SetTimeOutMoveOnToNextRound(1.5f));
     }
     IEnumerator SetTimeOutMoveOnToNextRound(float sec)
@@ -88,7 +85,7 @@ public class NeedleMove : MonoBehaviour
             SceneManager.LoadScene("Click Scene");
         }
     }
-    public void ScoreHandler(int currentRoomsScore)
+    void ScoreHandler(int currentRoomsScore)
     {
         score += currentRoomsScore;
         Debug.Log("score: " + score);

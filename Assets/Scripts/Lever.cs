@@ -6,23 +6,20 @@ using UnityEngine.EventSystems;
 
 public class Lever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    float currentPositionX; //현재 위치(x) 저장
-    float currentPositionY; //현재 위치(y) 저장
-    float currentPositionZ; //현재 위치(z) 저장
+    float currentPositionX;
+    float currentPositionY;
+    float currentPositionZ;
 
-    // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start");
         currentPositionX = transform.localPosition.x;
         currentPositionY = transform.localPosition.y;
         currentPositionZ = transform.localPosition.z;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // 
     }
 
     public void LeverClickHandler() {
