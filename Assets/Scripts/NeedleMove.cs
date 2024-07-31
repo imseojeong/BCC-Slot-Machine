@@ -19,7 +19,7 @@ public class NeedleMove : MonoBehaviour
 
 
     List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
-    int[,] index = new int[5,5];
+    int[,] score2D = new int[5,5];
 
     void Start()
     {
@@ -32,14 +32,15 @@ public class NeedleMove : MonoBehaviour
             var score = GameManager.Shuffle(score_s);
             for(int j=0; j<5; j++) 
             {
-                index[i,j] = score[j];
+                score2D[i,j] = score[j];
             }
         }
         for(int i=0; i<5; i++)
         {
+                Debug.Log(GameManager.ArrangeParts(i + 1));
             for(int j=0; j<5; j++) 
             {
-                Debug.Log("index"+(i+1)+"-"+(j+1)+": " + index[i,j]);
+                Debug.Log("score"+(i+1)+"-"+(j+1)+": " + score2D[i,j]);
                 
             }
         }
@@ -80,7 +81,7 @@ public class NeedleMove : MonoBehaviour
             if (currentPositionX < rooms[i])
             {
                 Debug.Log(i+1 + " 번째 칸");
-                currentRoomsScore = index[roundCount, i];
+                currentRoomsScore = score2D[roundCount, i];
                 break;
             }
         }

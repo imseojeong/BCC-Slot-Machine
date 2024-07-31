@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2915159
 Transform:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 277724896}
   m_Layer: 0
   m_Name: D-color
-  m_TagString: Untagged
+  m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,7 +423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &389286531
 Transform:
   m_ObjectHideFlags: 0
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 473134280}
   m_Layer: 0
   m_Name: B-color
-  m_TagString: Untagged
+  m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 560193597}
   m_Layer: 0
   m_Name: D-transparent
-  m_TagString: Untagged
+  m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 600051411}
   m_Layer: 0
   m_Name: A-transparent
-  m_TagString: Untagged
+  m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 653342057}
   m_Layer: 0
   m_Name: E-transparent
-  m_TagString: Untagged
+  m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 746676853}
   m_Layer: 0
   m_Name: B-color
-  m_TagString: Untagged
+  m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 752132504}
   m_Layer: 0
   m_Name: C-transparent
-  m_TagString: Untagged
+  m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 783988079}
   m_Layer: 0
   m_Name: A-color
-  m_TagString: Untagged
+  m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 881716985}
   m_Layer: 0
   m_Name: D-color
-  m_TagString: Untagged
+  m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1216,7 +1216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &939118891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,7 +1261,7 @@ GameObject:
   - component: {fileID: 1067303928}
   m_Layer: 0
   m_Name: E-color
-  m_TagString: Untagged
+  m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1437,7 +1437,7 @@ GameObject:
   - component: {fileID: 1117420891}
   m_Layer: 0
   m_Name: A-transparent
-  m_TagString: Untagged
+  m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1722,7 +1722,7 @@ GameObject:
   - component: {fileID: 1329695123}
   m_Layer: 0
   m_Name: B-transparent
-  m_TagString: Untagged
+  m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1806,7 +1806,7 @@ GameObject:
   - component: {fileID: 1395026262}
   m_Layer: 0
   m_Name: D-transparent
-  m_TagString: Untagged
+  m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1890,7 +1890,7 @@ GameObject:
   - component: {fileID: 1522026067}
   m_Layer: 0
   m_Name: C-transparent
-  m_TagString: Untagged
+  m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1974,7 +1974,7 @@ GameObject:
   - component: {fileID: 1634903861}
   m_Layer: 0
   m_Name: C-color
-  m_TagString: Untagged
+  m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2107,7 +2107,7 @@ GameObject:
   - component: {fileID: 1691640848}
   m_Layer: 0
   m_Name: E-color
-  m_TagString: Untagged
+  m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2191,7 +2191,7 @@ GameObject:
   - component: {fileID: 1698339276}
   m_Layer: 0
   m_Name: C-color
-  m_TagString: Untagged
+  m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2275,7 +2275,7 @@ GameObject:
   - component: {fileID: 1726087864}
   m_Layer: 0
   m_Name: E-color
-  m_TagString: Untagged
+  m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2516,7 +2516,7 @@ GameObject:
   - component: {fileID: 1790059078}
   m_Layer: 0
   m_Name: A-color
-  m_TagString: Untagged
+  m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2600,7 +2600,7 @@ GameObject:
   - component: {fileID: 1798477819}
   m_Layer: 0
   m_Name: A-color
-  m_TagString: Untagged
+  m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2684,7 +2684,7 @@ GameObject:
   - component: {fileID: 1836005280}
   m_Layer: 0
   m_Name: B-transparent
-  m_TagString: Untagged
+  m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2768,7 +2768,7 @@ GameObject:
   - component: {fileID: 1887168566}
   m_Layer: 0
   m_Name: C-color
-  m_TagString: Untagged
+  m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2852,7 +2852,7 @@ GameObject:
   - component: {fileID: 1888709839}
   m_Layer: 0
   m_Name: D-color
-  m_TagString: Untagged
+  m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2936,7 +2936,7 @@ GameObject:
   - component: {fileID: 1947406177}
   m_Layer: 0
   m_Name: E-transparent
-  m_TagString: Untagged
+  m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3024,7 +3024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2093362954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3069,7 +3069,7 @@ GameObject:
   - component: {fileID: 2145995543}
   m_Layer: 0
   m_Name: B-color
-  m_TagString: Untagged
+  m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
