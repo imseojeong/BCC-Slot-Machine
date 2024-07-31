@@ -9,7 +9,8 @@ public class NeedleMove : MonoBehaviour
     float leftMax = -7.68f;
     float currentPositionX;
     float currentPositionY;
-    float direction = 40.0f; // 이동 속도[숫자]+방향[+-부호] / 숫자 커질 수록 속도 빨라짐
+    [SerializeField]
+    float direction; // 이동 속도[숫자]+방향[+-부호] / 숫자 커질 수록 속도 빨라짐
 
     bool isMachineStopped = false;
     int currentRoomsScore = 0;
