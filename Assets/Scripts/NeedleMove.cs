@@ -77,8 +77,14 @@ public class NeedleMove : MonoBehaviour
         float[] rooms = new float[5];
         for(int i=0; i<rooms.Length; i++) {
             rooms[i] = leftMax + (i+1) * (entireRoom/rooms.Length);
+            if (currentPositionX < rooms[i])
+            {
+                Debug.Log(i+1 + " 번째 칸");
+                currentRoomsScore = index[roundCount, i];
+                break;
+            }
         }
-        if(currentPositionX < rooms[0]) {
+        /*if(currentPositionX < rooms[0]) {
             Debug.Log("첫 번째 칸");
             currentRoomsScore = 0;
         } else if(currentPositionX < rooms[1]) {
@@ -93,7 +99,7 @@ public class NeedleMove : MonoBehaviour
         } else if(currentPositionX < rooms[4]) {
             Debug.Log("다섯 번째 칸");
             currentRoomsScore = 20;
-        }
+        }*/
         ScoreHandler(currentRoomsScore);
         roundCount++;
         Debug.Log("Round " + roundCount);
