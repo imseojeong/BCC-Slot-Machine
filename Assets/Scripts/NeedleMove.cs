@@ -17,11 +17,32 @@ public class NeedleMove : MonoBehaviour
     int score = 0;
     int roundCount = 0;
 
+
+    List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
+    int[,] index = new int[5,5];
+
     void Start()
     {
         currentPositionX = transform.localPosition.x;
         currentPositionY = transform.localPosition.y;
         Debug.Log(gameObject.transform.parent.gameObject.transform.position);
+
+        for(int i=0; i<5; i++) 
+        {
+            var score = GameManager.Shuffle(score_s);
+            for(int j=0; j<5; j++) 
+            {
+                index[i,j] = score[j];
+            }
+        }
+        for(int i=0; i<5; i++)
+        {
+            for(int j=0; j<5; j++) 
+            {
+                Debug.Log("index"+(i+1)+"-"+(j+1)+": " + index[i,j]);
+                
+            }
+        }
     }
 
     void Update()
