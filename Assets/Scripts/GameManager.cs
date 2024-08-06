@@ -14,17 +14,17 @@ public class GameManager : MonoBehaviour
         return shuffled;
     }
 
-    public static String ArrangeParts(int round) 
+    public static void ArrangeParts(int[,] score2D, GameObject[,] parts2D)
     {
         GameObject parts = new GameObject();
-        //GameObject parts = GameObject.FindWithTag("Round" + round);
-        if (round%2==0)
-            parts = GameObject.Find("Round" + round).transform.Find("A-transparent").gameObject;
-        else
-            parts = GameObject.Find("Round" + round).transform.Find("A-color").gameObject;
-        //parts = parts.Find("A-color");
 
-        return parts.name;
+        for(int i=0; i<5; i++) 
+        {
+            for(int j=0; j<5; j++) 
+            {
+                parts2D[i,j] = GameObject.Find(i.ToString()).transform.Find(i.ToString()+"-"+score2D[i,j].ToString()).gameObject;
+            }
+        }
     }
 
 

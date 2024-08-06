@@ -16,10 +16,12 @@ public class NeedleMove : MonoBehaviour
     int currentRoomsScore = 0;
     int score = 0;
     int roundCount = 0;
+    float partsPositionX = 0;
 
 
     List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
-    int[,] score2D = new int[5,5];
+    public int[,] score2D = new int[5,5];
+    public GameObject[,] parts2D = new GameObject[5,5];
 
     void Start()
     {
@@ -35,12 +37,24 @@ public class NeedleMove : MonoBehaviour
                 score2D[i,j] = score[j];
             }
         }
+        GameManager.ArrangeParts(score2D, parts2D);
         for(int i=0; i<5; i++)
         {
-                Debug.Log(GameManager.ArrangeParts(i + 1));
             for(int j=0; j<5; j++) 
             {
                 Debug.Log("score"+(i+1)+"-"+(j+1)+": " + score2D[i,j]);
+                Debug.Log("parts"+(i+1)+"-"+(j+1)+": " + parts2D[i,j].transform.position.x);
+                switch (j)
+                {
+                    case 0: partsPositionX = -5.84f; break;
+                    case 1: partsPositionX = -2.99f; break;
+                    case 2: partsPositionX = -0.35f; break;
+                    case 3: partsPositionX = 2.22f; break;
+                    case 4: partsPositionX = 4.82f; break;
+                    default: Debug.Log("i가 0~4가 아님"); break;
+                }
+                parts2D[i,j].transform.position = new Vector3(partsPositionX, i, 0);
+                // parts2D[i,j].transform.position.x
                 
             }
         }
