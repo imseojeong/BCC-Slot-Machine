@@ -6,26 +6,21 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class ScoreButton : MonoBehaviour
-    , IPointerEnterHandler
-    , IPointerExitHandler
+    
 {
+    CandleLight candleLight = new CandleLight();
+
     public GameObject door;
     public GameObject background;
-    float doorInvoke = 0.6f;
+    float doorInvoke = 1.2f;
 
     public void InvokeScoreButtonClickHandler()
     {
-        gameObject.SetActive(false);
-        Invoke("ScoreButtonClickHandler", doorInvoke);
-        Invoke("DoorInactivate", doorInvoke);
-        Invoke("BackgroundInactivate", 0.65f);
-    }
-
-    public void ScoreButtonClickHandler()
-    {
-        //SceneManager.LoadScene("Score Scene");
-        gameObject.SetActive(false);
         Debug.Log("Click ScoreButton");
+        gameObject.SetActive(false);
+        Invoke("DoorInactivate", doorInvoke);
+        Invoke("BackgroundInactivate", 0.75f);
+        //candleLight.StartCoroutine(CandleLight.CandleLightActivate());
     }
     
     public void DoorInactivate()
@@ -38,7 +33,7 @@ public class ScoreButton : MonoBehaviour
         background.SetActive(false);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    /*public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter ScoreButton");
         this.transform.Rotate(0, 0, 2.5f);
@@ -48,12 +43,17 @@ public class ScoreButton : MonoBehaviour
     {
         Debug.Log("Exit ScoreButton");
         this.transform.Rotate(0, 0, -2.5f);
-    }
+    }*/
 
     void Start()
     {
-        // Åõ¸íÇÑ ¹è°æ ¹«½Ã
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GetComponent<Image>().alphaHitTestMinimumThreshold = 0.001f;
+        background.SetActive(true);
+        door.SetActive(true);
+        gameObject.SetActive(true);
+
+
     }
 
 }

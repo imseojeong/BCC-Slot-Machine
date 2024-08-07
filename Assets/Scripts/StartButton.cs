@@ -41,7 +41,7 @@ public class StartButton : MonoBehaviour
 
     void Start()
     {
-        // ������ ��� ����
+        // 투명부분 무시
         GetComponent<Image>().alphaHitTestMinimumThreshold = 0.001f;
     }
 }
