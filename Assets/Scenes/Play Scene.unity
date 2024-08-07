@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2915159}
   m_Layer: 0
-  m_Name: Hair
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 277724895}
   - component: {fileID: 277724896}
   m_Layer: 0
-  m_Name: D-color
+  m_Name: 4-5
   m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 389286531}
   m_Layer: 0
-  m_Name: Arms
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 473134279}
   - component: {fileID: 473134280}
   m_Layer: 0
-  m_Name: B-color
+  m_Name: 4-15
   m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 560193596}
   - component: {fileID: 560193597}
   m_Layer: 0
-  m_Name: D-transparent
+  m_Name: 3-5
   m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 600051410}
   - component: {fileID: 600051411}
   m_Layer: 0
-  m_Name: Hair-20
+  m_Name: 1-20
   m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 653342056}
   - component: {fileID: 653342057}
   m_Layer: 0
-  m_Name: E-transparent
+  m_Name: 3-0
   m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 746676852}
   - component: {fileID: 746676853}
   m_Layer: 0
-  m_Name: Torso-15
+  m_Name: 2-15
   m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 752132503}
   - component: {fileID: 752132504}
   m_Layer: 0
-  m_Name: Hair-10
+  m_Name: 1-10
   m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1043,7 +1043,7 @@ GameObject:
   - component: {fileID: 783988078}
   - component: {fileID: 783988079}
   m_Layer: 0
-  m_Name: Face-20
+  m_Name: 0-20
   m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 881716984}
   - component: {fileID: 881716985}
   m_Layer: 0
-  m_Name: Face-5
+  m_Name: 0-5
   m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1211,7 +1211,7 @@ GameObject:
   - component: {fileID: 939118892}
   - component: {fileID: 939118891}
   m_Layer: 0
-  m_Name: Legs
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1260,7 +1260,7 @@ GameObject:
   - component: {fileID: 1067303927}
   - component: {fileID: 1067303928}
   m_Layer: 0
-  m_Name: Face-0
+  m_Name: 0-0
   m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1436,7 +1436,7 @@ GameObject:
   - component: {fileID: 1117420890}
   - component: {fileID: 1117420891}
   m_Layer: 0
-  m_Name: A-transparent
+  m_Name: 3-20
   m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1721,7 +1721,7 @@ GameObject:
   - component: {fileID: 1329695122}
   - component: {fileID: 1329695123}
   m_Layer: 0
-  m_Name: Hair-15
+  m_Name: 1-15
   m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1805,7 +1805,7 @@ GameObject:
   - component: {fileID: 1395026261}
   - component: {fileID: 1395026262}
   m_Layer: 0
-  m_Name: Hair-5
+  m_Name: 1-5
   m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1889,7 +1889,7 @@ GameObject:
   - component: {fileID: 1522026066}
   - component: {fileID: 1522026067}
   m_Layer: 0
-  m_Name: C-transparent
+  m_Name: 3-10
   m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1973,7 +1973,7 @@ GameObject:
   - component: {fileID: 1634903860}
   - component: {fileID: 1634903861}
   m_Layer: 0
-  m_Name: Torso-10
+  m_Name: 2-10
   m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2057,7 +2057,7 @@ GameObject:
   - component: {fileID: 1637728287}
   - component: {fileID: 1637728288}
   m_Layer: 0
-  m_Name: Face
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2106,7 +2106,7 @@ GameObject:
   - component: {fileID: 1691640847}
   - component: {fileID: 1691640848}
   m_Layer: 0
-  m_Name: Torso-0
+  m_Name: 2-0
   m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2190,7 +2190,7 @@ GameObject:
   - component: {fileID: 1698339275}
   - component: {fileID: 1698339276}
   m_Layer: 0
-  m_Name: C-color
+  m_Name: 4-10
   m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2274,7 +2274,7 @@ GameObject:
   - component: {fileID: 1726087863}
   - component: {fileID: 1726087864}
   m_Layer: 0
-  m_Name: E-color
+  m_Name: 4-0
   m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2515,7 +2515,7 @@ GameObject:
   - component: {fileID: 1790059077}
   - component: {fileID: 1790059078}
   m_Layer: 0
-  m_Name: A-color
+  m_Name: 4-20
   m_TagString: Round5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2599,7 +2599,7 @@ GameObject:
   - component: {fileID: 1798477818}
   - component: {fileID: 1798477819}
   m_Layer: 0
-  m_Name: Torso-20
+  m_Name: 2-20
   m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2683,7 +2683,7 @@ GameObject:
   - component: {fileID: 1836005279}
   - component: {fileID: 1836005280}
   m_Layer: 0
-  m_Name: B-transparent
+  m_Name: 3-15
   m_TagString: Round4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2767,7 +2767,7 @@ GameObject:
   - component: {fileID: 1887168565}
   - component: {fileID: 1887168566}
   m_Layer: 0
-  m_Name: Face-10
+  m_Name: 0-10
   m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2851,7 +2851,7 @@ GameObject:
   - component: {fileID: 1888709838}
   - component: {fileID: 1888709839}
   m_Layer: 0
-  m_Name: Torso-5
+  m_Name: 2-5
   m_TagString: Round3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2935,7 +2935,7 @@ GameObject:
   - component: {fileID: 1947406176}
   - component: {fileID: 1947406177}
   m_Layer: 0
-  m_Name: Hair-0
+  m_Name: 1-0
   m_TagString: Round2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3019,7 +3019,7 @@ GameObject:
   - component: {fileID: 2093362955}
   - component: {fileID: 2093362954}
   m_Layer: 0
-  m_Name: Torso
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3068,7 +3068,7 @@ GameObject:
   - component: {fileID: 2145995542}
   - component: {fileID: 2145995543}
   m_Layer: 0
-  m_Name: Face-15
+  m_Name: 0-15
   m_TagString: Round1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
