@@ -16,7 +16,13 @@ public class NeedleMove : MonoBehaviour
     int currentRoomsScore = 0;
     int score = 0;
     int roundCount = 0;
+
     float partsPositionX = 0;
+    float partsPositionY = 4.0f;
+
+    float partsPosYTop = 4.0f;
+    float partsPosYMiddle = 1.1f;
+    float partsPosYBottom = -1.7f;
 
 
     List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
@@ -53,9 +59,15 @@ public class NeedleMove : MonoBehaviour
                     case 4: partsPositionX = 4.82f; break;
                     default: Debug.Log("i가 0~4가 아님"); break;
                 }
-                parts2D[i,j].transform.position = new Vector3(partsPositionX, 0, 0);
+                if (i==0) {
+                    partsPositionY = partsPosYMiddle;
+                } 
+                parts2D[i,j].transform.position = new Vector3(partsPositionX, partsPositionY, 0);
+                partsPositionY = partsPosYTop;
+
                 
             }
+
         }
     }
 
@@ -63,6 +75,15 @@ public class NeedleMove : MonoBehaviour
     {
         if(!isMachineStopped) {
             currentPositionX += Time.deltaTime * direction;
+        } else {
+            // 레버를 눌러서 바늘이 멈추면 다음 라운드로 넘어가기(파츠 위치 조정)
+            for(int i=0; i<5; i++) {
+                if(roundCount>=5) {
+                    break;
+                }
+                parts2D[roundCount, i].transform.position = new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0);
+                parts2D[roundCount-1, i].transform.position = new Vector3(parts2D[roundCount-1, i].transform.position.x, partsPosYBottom, 0);
+            }
         }
         if (currentPositionX >= rightMax)
         {
@@ -98,27 +119,13 @@ public class NeedleMove : MonoBehaviour
                 break;
             }
         }
-        /*if(currentPositionX < rooms[0]) {
-            Debug.Log("첫 번째 칸");
-            currentRoomsScore = 0;
-        } else if(currentPositionX < rooms[1]) {
-            Debug.Log("두 번째 칸");
-            currentRoomsScore = 5;
-        } else if(currentPositionX < rooms[2]) {
-            Debug.Log("세 번째 칸");
-            currentRoomsScore = 10;
-        } else if(currentPositionX < rooms[3]) {
-            Debug.Log("네 번째 칸");
-            currentRoomsScore = 15;
-        } else if(currentPositionX < rooms[4]) {
-            Debug.Log("다섯 번째 칸");
-            currentRoomsScore = 20;
-        }*/
         ScoreHandler(currentRoomsScore);
         roundCount++;
         Debug.Log("Round " + roundCount);
-        StartCoroutine(SetTimeOutMoveOnToNextRound(1.5f));
+        
+        StartCoroutine(SetTimeOutMoveOnToNextRound(1.0f));
     }
+    
     IEnumerator SetTimeOutMoveOnToNextRound(float sec)
     {
         yield return new WaitForSeconds(sec);

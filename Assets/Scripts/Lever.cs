@@ -28,7 +28,7 @@ public class Lever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     IEnumerator Example2()
     {
         GetComponent<Button>().interactable = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         GetComponent<Button>().interactable = true;
     }
 
