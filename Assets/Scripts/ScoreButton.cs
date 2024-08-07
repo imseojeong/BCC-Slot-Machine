@@ -10,12 +10,15 @@ public class ScoreButton : MonoBehaviour
     , IPointerExitHandler
 {
     public GameObject door;
+    public GameObject background;
+    float doorInvoke = 0.6f;
 
     public void InvokeScoreButtonClickHandler()
     {
         gameObject.SetActive(false);
-        Invoke("ScoreButtonClickHandler", 0.59f);
-        Invoke("DoorInactivate", 0.59f);
+        Invoke("ScoreButtonClickHandler", doorInvoke);
+        Invoke("DoorInactivate", doorInvoke);
+        Invoke("BackgroundInactivate", 0.65f);
     }
 
     public void ScoreButtonClickHandler()
@@ -28,6 +31,11 @@ public class ScoreButton : MonoBehaviour
     public void DoorInactivate()
     {
         door.SetActive(false);
+    }
+
+    public void BackgroundInactivate()
+    {
+        background.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
