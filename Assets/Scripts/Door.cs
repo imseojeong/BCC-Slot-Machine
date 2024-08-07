@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
 {
     Animator anim;
 
+    // 문열리는 애니메이션 실행 메소드
     public void ScoreButtonClickHandler()
     {
         anim.Play("door_open");
@@ -16,10 +17,4 @@ public class Door : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        /*if (Input.GetButton("Submit"))
-            anim.Play("door_open");*/
-
-    }
 }

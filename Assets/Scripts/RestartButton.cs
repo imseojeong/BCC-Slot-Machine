@@ -30,7 +30,7 @@ public class RestartButton : MonoBehaviour
 
     void Start()
     {
-        // Åõ¸íÇÑ ¹è°æ ¹«½Ã
+        // íˆ¬ëª…ë°°ê²½ ë¬´ì‹œ
         GetComponent<Image>().alphaHitTestMinimumThreshold = 0.001f;
     }
 }

@@ -22,13 +22,18 @@ public class Lever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         // 
     }
 
+    //레버 클릭하면 실행되는 메소드
     public void LeverClickHandler() {
-        StartCoroutine(Example2());
+        StartCoroutine(InActiveLeverButton());
     }
-    IEnumerator Example2()
+
+    IEnumerator InActiveLeverButton()
     {
+        // 레버 버튼 비활성화
         GetComponent<Button>().interactable = false;
+        // 1초 기다림
         yield return new WaitForSeconds(1.0f);
+        // 레버 버튼 활성화
         GetComponent<Button>().interactable = true;
     }
 

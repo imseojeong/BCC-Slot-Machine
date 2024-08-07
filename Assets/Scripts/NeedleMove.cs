@@ -16,24 +16,19 @@ public class NeedleMove : MonoBehaviour
     int currentRoomsScore = 0;
     int score = 0;
     int roundCount = 0;
-
     float partsPositionX = 0;
-    float partsPositionY = 4.0f;
 
-    float partsPosYTop = 4.0f;
-    float partsPosYMiddle = 1.1f;
-    float partsPosYBottom = -1.7f;
-
-
+    // 점수 리스트 (섞기 전)
     List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
+    // 모든 라운드(5라운드)의 점수 리스트를 섞은 후 넣어줄 5x5 2차원 배열
     public int[,] score2D = new int[5,5];
+    // 섞인 점수에 맞춰서 캐릭터 파츠 넣어줄 5x5 2차원 배열
     public GameObject[,] parts2D = new GameObject[5,5];
 
     void Start()
     {
         currentPositionX = transform.localPosition.x;
         currentPositionY = transform.localPosition.y;
-        Debug.Log(gameObject.transform.parent.gameObject.transform.position);
 
         for(int i=0; i<5; i++) 
         {
@@ -43,13 +38,14 @@ public class NeedleMove : MonoBehaviour
                 score2D[i,j] = score[j];
             }
         }
+        
         GameManager.ArrangeParts(score2D, parts2D);
+
+        // parts2D배열에 들어있는 순서대로 위치(x) 잡아주는 반복문
         for(int i=0; i<5; i++)
         {
             for(int j=0; j<5; j++) 
             {
-                Debug.Log("score"+(i+1)+"-"+(j+1)+": " + score2D[i,j]);
-                Debug.Log("parts"+(i+1)+"-"+(j+1)+": " + parts2D[i,j].transform.position.x);
                 switch (j)
                 {
                     case 0: partsPositionX = -5.84f; break;
@@ -59,15 +55,9 @@ public class NeedleMove : MonoBehaviour
                     case 4: partsPositionX = 4.82f; break;
                     default: Debug.Log("i가 0~4가 아님"); break;
                 }
-                if (i==0) {
-                    partsPositionY = partsPosYMiddle;
-                } 
-                parts2D[i,j].transform.position = new Vector3(partsPositionX, partsPositionY, 0);
-                partsPositionY = partsPosYTop;
-
+                parts2D[i,j].transform.position = new Vector3(partsPositionX, 0, 0);
                 
             }
-
         }
     }
 
@@ -75,15 +65,6 @@ public class NeedleMove : MonoBehaviour
     {
         if(!isMachineStopped) {
             currentPositionX += Time.deltaTime * direction;
-        } else {
-            // 레버를 눌러서 바늘이 멈추면 다음 라운드로 넘어가기(파츠 위치 조정)
-            for(int i=0; i<5; i++) {
-                if(roundCount>=5) {
-                    break;
-                }
-                parts2D[roundCount, i].transform.position = new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0);
-                parts2D[roundCount-1, i].transform.position = new Vector3(parts2D[roundCount-1, i].transform.position.x, partsPosYBottom, 0);
-            }
         }
         if (currentPositionX >= rightMax)
         {
@@ -103,6 +84,11 @@ public class NeedleMove : MonoBehaviour
         transform.localPosition = new Vector3(currentPositionX, currentPositionY, 0);
     }
 
+    // 레버를 클릭하면 실행되는 메소드
+    // 바늘 멈춤
+    // 1초동안 멈췄다가 1초 지나면 다시 움직임 (coroutine, IEnumerator)
+    // 점수 계산도 함
+    // 몇 라운드인지 셈
     public void NeedleStopHandler()
     {
         isMachineStopped = true;
@@ -122,10 +108,10 @@ public class NeedleMove : MonoBehaviour
         ScoreHandler(currentRoomsScore);
         roundCount++;
         Debug.Log("Round " + roundCount);
-        
-        StartCoroutine(SetTimeOutMoveOnToNextRound(1.0f));
+        StartCoroutine(SetTimeOutMoveOnToNextRound(1.5f));
     }
-    
+
+    //1초 기다린 후에 실행되는 코드
     IEnumerator SetTimeOutMoveOnToNextRound(float sec)
     {
         yield return new WaitForSeconds(sec);
@@ -134,6 +120,8 @@ public class NeedleMove : MonoBehaviour
             SceneManager.LoadScene("Score Scene");
         }
     }
+
+    // 각 라운드별 점수 더해서 총점 계산하는 코드
     void ScoreHandler(int currentRoomsScore)
     {
         score += currentRoomsScore;
