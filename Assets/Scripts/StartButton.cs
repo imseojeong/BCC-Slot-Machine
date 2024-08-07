@@ -9,10 +9,22 @@ public class StartButton : MonoBehaviour
     , IPointerEnterHandler
     , IPointerExitHandler
 {
+    // Animator CherryBombAnimation;
+    public Animator CherryBombAnimation;
+    public GameObject cherryBomb;
+
     public void StartButtonClickHandler()
     {
-        SceneManager.LoadScene("Play Scene");
         Debug.Log("Click StartButton");
+        cherryBomb.SetActive(true);
+        CherryBombAnimation.Play("CherryBombAnimation");
+        Invoke("LoadPlayScene", 0.5f);
+        // cherryBomb.SetActive(false);
+    }
+
+    public void LoadPlayScene()
+    {
+        SceneManager.LoadScene("Play Scene");
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -29,7 +41,7 @@ public class StartButton : MonoBehaviour
 
     void Start()
     {
-        // Åõ¸íÇÑ ¹è°æ ¹«½Ã
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GetComponent<Image>().alphaHitTestMinimumThreshold = 0.001f;
     }
 }

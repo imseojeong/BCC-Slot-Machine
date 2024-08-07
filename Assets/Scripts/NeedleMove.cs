@@ -53,8 +53,7 @@ public class NeedleMove : MonoBehaviour
                     case 4: partsPositionX = 4.82f; break;
                     default: Debug.Log("i가 0~4가 아님"); break;
                 }
-                parts2D[i,j].transform.position = new Vector3(partsPositionX, i, 0);
-                // parts2D[i,j].transform.position.x
+                parts2D[i,j].transform.position = new Vector3(partsPositionX, 0, 0);
                 
             }
         }
@@ -125,7 +124,7 @@ public class NeedleMove : MonoBehaviour
         yield return new WaitForSeconds(sec);
         isMachineStopped = false;
          if(roundCount==5) {
-            SceneManager.LoadScene("Click Scene");
+            SceneManager.LoadScene("Score Scene");
         }
     }
     void ScoreHandler(int currentRoomsScore)
