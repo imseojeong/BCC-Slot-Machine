@@ -13,6 +13,7 @@ public class NeedleMove : MonoBehaviour
     float direction; // 이동 속도[숫자]+방향[+-부호] / 숫자 커질 수록 속도 빨라짐
 
     bool isMachineStopped = false;
+    bool isPartsMoving = false;
     int currentRoomsScore = 0;
     int score = 0;
     int roundCount = 0;
@@ -64,7 +65,6 @@ public class NeedleMove : MonoBehaviour
                     case 4: partsPositionX = 4.82f; break;
                     default: Debug.Log("i가 0~4가 아님"); break;
                 }
-                // parts2D[i,j].transform.position = new Vector3(partsPositionX, 0, 0);
                 if (i==0) {
                     partsPositionY = partsPosYMiddle;
                 } 
@@ -78,8 +78,8 @@ public class NeedleMove : MonoBehaviour
     {
         if(!isMachineStopped) {
             currentPositionX += Time.deltaTime * direction;
-        } else {
-            // 레버를 눌러서 바늘이 멈추면 다음 라운드로 넘어가기(파츠 위치 조정)
+        } else if(isPartsMoving) {
+            // 레버를 눌러서 바늘이 멈추면 다음 라운드로 넘어가기(라운드 넘어갈 때 파츠 아래로 내려가게 위치 조정)
             for(int i=0; i<5; i++) {
                 if(roundCount>=5) {
                     break;
@@ -125,7 +125,7 @@ public class NeedleMove : MonoBehaviour
             rooms[i] = leftMax + (i+1) * (entireRoom/rooms.Length);
             if (currentPositionX < rooms[i])
             {
-                Debug.Log(i+1 + " 번째 칸");
+                Debug.Log(i+1 + " 번째 칸에 멈춤");
                 currentRoomsScore = score2D[roundCount, i];
                 break;
             }
@@ -133,14 +133,22 @@ public class NeedleMove : MonoBehaviour
         ScoreHandler(currentRoomsScore);
         roundCount++;
         Debug.Log("Round " + roundCount);
+        Debug.Log("_______________");
         StartCoroutine(SetTimeOutMoveOnToNextRound(machineStoppedDuration));
     }
 
-    //1초 기다린 후에 실행되는 코드
     IEnumerator SetTimeOutMoveOnToNextRound(float sec)
     {
-        yield return new WaitForSeconds(sec);
+        float waitPartsMovingSec = sec - sec/3;
+
+        // 3분의 1초 기다렸다가 파츠들 아래로 내려가게 하는 코드
+        yield return new WaitForSeconds(waitPartsMovingSec);
+        isPartsMoving = true;
+
+        //machineStoppedDuration(1초) 기다린 후에 실행되는 코드
+        yield return new WaitForSeconds(sec-waitPartsMovingSec);
         isMachineStopped = false;
+        isPartsMoving = false;
          if(roundCount==5) {
             SceneManager.LoadScene("Score Scene");
         }
@@ -150,6 +158,7 @@ public class NeedleMove : MonoBehaviour
     void ScoreHandler(int currentRoomsScore)
     {
         score += currentRoomsScore;
-        Debug.Log("score: " + score);
+        Debug.Log("이번 라운드 점수: " + currentRoomsScore);
+        Debug.Log("총점: " + score);
     }
 }
