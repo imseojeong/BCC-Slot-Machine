@@ -17,6 +17,11 @@ public class NeedleMove : MonoBehaviour
     int score = 0;
     int roundCount = 0;
     float partsPositionX = 0;
+    float partsPositionY = 4.0f;
+
+    float partsPosYTop = 4.0f;
+    float partsPosYMiddle = 1.1f;
+    float partsPosYBottom = -1.7f;
 
     // 점수 리스트 (섞기 전)
     List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
@@ -55,7 +60,13 @@ public class NeedleMove : MonoBehaviour
                     case 4: partsPositionX = 4.82f; break;
                     default: Debug.Log("i가 0~4가 아님"); break;
                 }
-                parts2D[i,j].transform.position = new Vector3(partsPositionX, 0, 0);
+                // parts2D[i,j].transform.position = new Vector3(partsPositionX, 0, 0);
+                if (i==0) {
+                    partsPositionY = partsPosYMiddle;
+                } 
+                parts2D[i,j].transform.position = new Vector3(partsPositionX, partsPositionY, 0);
+                partsPositionY = partsPosYTop;
+
                 
             }
         }
@@ -65,6 +76,15 @@ public class NeedleMove : MonoBehaviour
     {
         if(!isMachineStopped) {
             currentPositionX += Time.deltaTime * direction;
+        } else {
+            // 레버를 눌러서 바늘이 멈추면 다음 라운드로 넘어가기(파츠 위치 조정)
+            for(int i=0; i<5; i++) {
+                if(roundCount>=5) {
+                    break;
+                }
+                parts2D[roundCount, i].transform.position = new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0);
+                parts2D[roundCount-1, i].transform.position = new Vector3(parts2D[roundCount-1, i].transform.position.x, partsPosYBottom, 0);
+            }
         }
         if (currentPositionX >= rightMax)
         {
@@ -108,7 +128,7 @@ public class NeedleMove : MonoBehaviour
         ScoreHandler(currentRoomsScore);
         roundCount++;
         Debug.Log("Round " + roundCount);
-        StartCoroutine(SetTimeOutMoveOnToNextRound(1.5f));
+        StartCoroutine(SetTimeOutMoveOnToNextRound(1.0f));
     }
 
     //1초 기다린 후에 실행되는 코드
