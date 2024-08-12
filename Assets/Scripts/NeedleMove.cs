@@ -21,7 +21,7 @@ public class NeedleMove : MonoBehaviour
 
     float partsPosYTop = 4.0f;
     float partsPosYMiddle = 1.1f;
-    float partsPosYBottom = -1.7f;
+    float partsPosYBottom = -1.9f;
 
     // 점수 리스트 (섞기 전)
     List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
@@ -29,6 +29,10 @@ public class NeedleMove : MonoBehaviour
     public int[,] score2D = new int[5,5];
     // 섞인 점수에 맞춰서 캐릭터 파츠 넣어줄 5x5 2차원 배열
     public GameObject[,] parts2D = new GameObject[5,5];
+
+
+    public float machineStoppedDuration = 1.0f;
+
 
     void Start()
     {
@@ -66,8 +70,6 @@ public class NeedleMove : MonoBehaviour
                 } 
                 parts2D[i,j].transform.position = new Vector3(partsPositionX, partsPositionY, 0);
                 partsPositionY = partsPosYTop;
-
-                
             }
         }
     }
@@ -82,8 +84,11 @@ public class NeedleMove : MonoBehaviour
                 if(roundCount>=5) {
                     break;
                 }
-                parts2D[roundCount, i].transform.position = new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0);
-                parts2D[roundCount-1, i].transform.position = new Vector3(parts2D[roundCount-1, i].transform.position.x, partsPosYBottom, 0);
+                parts2D[roundCount, i].transform.position = Vector3.MoveTowards(parts2D[roundCount, i].transform.position, new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0), 10.0f * Time.deltaTime);
+                parts2D[roundCount-1, i].transform.position = Vector3.MoveTowards(parts2D[roundCount-1, i].transform.position, new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYBottom, 0), 10.0f * Time.deltaTime);
+                // parts2D[roundCount, i].transform.position = new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0);
+                // parts2D[roundCount-1, i].transform.position = new Vector3(parts2D[roundCount-1, i].transform.position.x, partsPosYBottom, 0);
+
             }
         }
         if (currentPositionX >= rightMax)
@@ -128,7 +133,7 @@ public class NeedleMove : MonoBehaviour
         ScoreHandler(currentRoomsScore);
         roundCount++;
         Debug.Log("Round " + roundCount);
-        StartCoroutine(SetTimeOutMoveOnToNextRound(1.0f));
+        StartCoroutine(SetTimeOutMoveOnToNextRound(machineStoppedDuration));
     }
 
     //1초 기다린 후에 실행되는 코드
