@@ -15,7 +15,7 @@ public class NeedleMove : MonoBehaviour
     bool isMachineStopped = false;
     bool isPartsMoving = false;
     int currentRoomsScore = 0;
-    int score = 0;
+    public static int score = 0;
     int roundCount = 0;
     float partsPositionX = 0;
     float partsPositionY = 4.0f;

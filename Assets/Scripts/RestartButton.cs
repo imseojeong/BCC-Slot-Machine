@@ -14,6 +14,7 @@ public class RestartButton : MonoBehaviour
     {
         SceneManager.LoadScene("Start Scene");
         Debug.Log("Click RestartButton");
+        NeedleMove.score = 0;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

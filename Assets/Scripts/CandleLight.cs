@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class CandleLight : MonoBehaviour
 {
-    //ScoreButton ScoreButton;
     public static Animator anim;
-
-     /*public IEnumerator CandleLightActivate(GameObject candle, float doorAnimationDuration)
-     {
-         yield return new WaitForSeconds(doorAnimationDuration);
-         candle.SetActive(true);
-         anim.Play("CandleLight");
-     }*/
+    public static RectTransform rectTransform;
 
     void Start()
     {
         gameObject.SetActive(false);
         anim = GetComponent<Animator>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     void Update()

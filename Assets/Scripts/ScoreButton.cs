@@ -11,14 +11,15 @@ public class ScoreButton : MonoBehaviour
     public Vector3 targetPosition;
 
     Animator anim;
-    public GameObject door;
     public GameObject background;
+    public GameObject door;
+    public GameObject halfDoor;
     public GameObject candle;
-    public GameObject HalfDoor;
-    // 문 열리는 애니메이션 지속시간
-    float doorAnimationDuration = 1.2f;
-    float keyAnimationDuration = 0.4f;
+    public GameObject cakeTopper;
+    public GameObject lightEffect;
     bool isScoreButtonClicked = false;
+
+    int rank = 0;
 
     // 열쇠 클릭 시 열쇠, 문, 배경 비활성화
     public void InvokeScoreButtonClickHandler()
@@ -39,17 +40,35 @@ public class ScoreButton : MonoBehaviour
         // 문 열림
         yield return new WaitForSeconds(1.0f);
         transform.position = new Vector3(-1300, 0, 0);
-        HalfDoor.SetActive(false);
+        halfDoor.SetActive(false);
         Door.anim.Play("door_open");
         Debug.Log("Play doorOpen");
         
         // 불 켜짐
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.5f);
         door.SetActive(false);
         background.SetActive(false);
         candle.SetActive(true);
-        CandleLight.anim.Play("CandleLight2");
-        Debug.Log("Play CandleLight2");
+        cakeTopper.SetActive(true);
+        lightEffect.SetActive(true);
+        CandleLight.anim.Play("CandleLight");
+        Debug.Log("Play CandleLight");
+
+        // 점수 출력
+        if(NeedleMove.score == 100) {
+            rank = 1;
+            CandleLight.rectTransform.anchoredPosition = new Vector2(184f, 111f);
+        } else if(NeedleMove.score > 70) {
+            rank = 2;
+            CandleLight.rectTransform.anchoredPosition = new Vector2(447.7f, 15.1f);
+        } else if(NeedleMove.score > 50) {
+            rank = 3;
+            CandleLight.rectTransform.anchoredPosition = new Vector2(675f, -81.6f);
+        } else {
+            rank = 4;
+            CandleLight.rectTransform.anchoredPosition = new Vector2(1055.3f, -177.7f);
+        }
+        Debug.Log("Score: " + NeedleMove.score + ", Rank: " + rank +"등");
     }
 
     void Start()
@@ -60,7 +79,11 @@ public class ScoreButton : MonoBehaviour
 
         background.SetActive(true);
         door.SetActive(true);
+        halfDoor.SetActive(true);
         gameObject.SetActive(true);
+        candle.SetActive(false);
+        cakeTopper.SetActive(false);
+        lightEffect.SetActive(false);
 
         targetPosition = new Vector3(-80, transform.position.y, 0);
     }
@@ -68,8 +91,6 @@ public class ScoreButton : MonoBehaviour
     void Update()
     {
         if (isScoreButtonClicked)
-        {
-            Debug.Log("이동중..");
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, 100.0f * Time.deltaTime);        }
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, 100.0f * Time.deltaTime);        
     }
 }
