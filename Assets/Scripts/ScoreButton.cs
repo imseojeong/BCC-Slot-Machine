@@ -49,24 +49,30 @@ public class ScoreButton : MonoBehaviour
         door.SetActive(false);
         background.SetActive(false);
         candle.SetActive(true);
-        cakeTopper.SetActive(true);
         lightEffect.SetActive(true);
-        CandleLight.anim.Play("CandleLight");
-        Debug.Log("Play CandleLight");
+        CandleLight.anim.Play("candleLight");
+        Debug.Log("Play candleLight");
 
         // 점수 출력
         if(NeedleMove.score == 100) {
             rank = 1;
             CandleLight.rectTransform.anchoredPosition = new Vector2(184f, 111f);
-        } else if(NeedleMove.score > 70) {
+            LightEffect.rectTransform.anchoredPosition = new Vector2(184f, 73f);
+        }
+        else if(NeedleMove.score > 70) {
             rank = 2;
             CandleLight.rectTransform.anchoredPosition = new Vector2(447.7f, 15.1f);
-        } else if(NeedleMove.score > 50) {
+            LightEffect.rectTransform.anchoredPosition = new Vector2(447.7f, -22.9f);
+        }
+        else if(NeedleMove.score > 50) {
             rank = 3;
             CandleLight.rectTransform.anchoredPosition = new Vector2(675f, -81.6f);
+            LightEffect.rectTransform.anchoredPosition = new Vector2(675f, -119.6f);
         } else {
             rank = 4;
-            CandleLight.rectTransform.anchoredPosition = new Vector2(1055.3f, -177.7f);
+            CandleLight.rectTransform.anchoredPosition = new Vector2(853f, -167f);
+            LightEffect.rectTransform.anchoredPosition = new Vector2(853f, -205f);
+            cakeTopper.SetActive(true);
         }
         Debug.Log("Score: " + NeedleMove.score + ", Rank: " + rank +"등");
     }
