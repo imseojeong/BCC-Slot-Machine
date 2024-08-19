@@ -127,6 +127,18 @@ public class NeedleMove : MonoBehaviour
             {
                 Debug.Log(i+1 + " 번째 칸에 멈춤");
                 currentRoomsScore = score2D[roundCount, i];
+                Vector2 clonePosition = new Vector2(0, -3.1f);
+                switch (roundCount) {
+                    case 0: 
+                    case 1: clonePosition = new Vector2(-5.72f, -3.1f); break;
+                    case 2: 
+                    case 3: clonePosition = new Vector2(-0.43f, -3.1f); break;
+                    case 4: clonePosition = new Vector2(4.81f, -3.1f); break;
+                }
+                // 선택된 파츠 복제해서 아래에 띄우기
+                GameObject clone = Instantiate(parts2D[roundCount, i], clonePosition, Quaternion.Euler(0, 0, 0));
+                // 'default'레이어 보다 위에 있는 'Layer1'레이어로 옮김
+                clone.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Layer1");
                 break;
             }
         }
