@@ -50,10 +50,10 @@ public class ScoreButton : MonoBehaviour
         background.SetActive(false);
         candle.SetActive(true);
         lightEffect.SetActive(true);
-        CandleLight.anim.Play("candleLight");
         Debug.Log("Play candleLight");
 
-        // 점수 출력
+        // candle.SetActive(true) 기다리기
+        yield return new WaitForSeconds(0.00001f);
         if(NeedleMove.score == 100) {
             rank = 1;
             CandleLight.rectTransform.anchoredPosition = new Vector2(184f, 111f);
@@ -74,6 +74,7 @@ public class ScoreButton : MonoBehaviour
             LightEffect.rectTransform.anchoredPosition = new Vector2(853f, -205f);
             cakeTopper.SetActive(true);
         }
+        // 점수 출력
         Debug.Log("Score: " + NeedleMove.score + ", Rank: " + rank +"등");
     }
 
