@@ -20,9 +20,9 @@ public class NeedleMove : MonoBehaviour
     float partsPositionX = 0;
     float partsPositionY = 4.0f;
 
-    float partsPosYTop = 4.0f;
+    float partsPosYTop = 4.7f;
     float partsPosYMiddle = 1.1f;
-    float partsPosYBottom = -1.9f;
+    float partsPosYBottom = -2.2f;
 
     // 점수 리스트 (섞기 전)
     List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
@@ -84,8 +84,8 @@ public class NeedleMove : MonoBehaviour
                 if(roundCount>=5) {
                     break;
                 }
-                parts2D[roundCount, i].transform.position = Vector3.MoveTowards(parts2D[roundCount, i].transform.position, new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0), 10.0f * Time.deltaTime);
-                parts2D[roundCount-1, i].transform.position = Vector3.MoveTowards(parts2D[roundCount-1, i].transform.position, new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYBottom, 0), 10.0f * Time.deltaTime);
+                parts2D[roundCount, i].transform.position = Vector3.MoveTowards(parts2D[roundCount, i].transform.position, new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0), 15.0f * Time.deltaTime);
+                parts2D[roundCount-1, i].transform.position = Vector3.MoveTowards(parts2D[roundCount-1, i].transform.position, new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYBottom, 0), 15.0f * Time.deltaTime);
                 // parts2D[roundCount, i].transform.position = new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYMiddle, 0);
                 // parts2D[roundCount-1, i].transform.position = new Vector3(parts2D[roundCount-1, i].transform.position.x, partsPosYBottom, 0);
 
@@ -136,9 +136,15 @@ public class NeedleMove : MonoBehaviour
                     case 4: clonePosition = new Vector2(4.81f, -3.1f); break;
                 }
                 // 선택된 파츠 복제해서 아래에 띄우기
-                GameObject clone = Instantiate(parts2D[roundCount, i], clonePosition, Quaternion.Euler(0, 0, 0));
-                // 'default'레이어 보다 위에 있는 'Layer1'레이어로 옮김
-                clone.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Layer1");
+                if(roundCount>1) {
+                    GameObject clone = Instantiate(parts2D[roundCount, i], clonePosition, Quaternion.Euler(0, 0, 0));
+                    // 'default'레이어 보다 위에 있는 'Layer1'레이어로 옮김
+                    clone.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("face");
+                } else {
+                    Object prefab = Resources.Load("Prefabs/"+roundCount.ToString()+"-"+currentRoomsScore.ToString());
+                    Debug.Log(roundCount.ToString()+"-"+currentRoomsScore.ToString());
+                    Instantiate(prefab);
+                }
                 break;
             }
         }
