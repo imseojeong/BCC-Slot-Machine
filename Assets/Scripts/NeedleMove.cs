@@ -38,6 +38,7 @@ public class NeedleMove : MonoBehaviour
     void Start()
     {
         GameManager.score = 0;
+        roundCount = 0;
 
         currentPositionX = transform.localPosition.x;
         currentPositionY = transform.localPosition.y;
