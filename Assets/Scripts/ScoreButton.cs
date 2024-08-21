@@ -59,16 +59,16 @@ public class ScoreButton : MonoBehaviour
             CandleLight.rectTransform.anchoredPosition = new Vector2(184f, 111f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(184f, 73f);
         }
-        else if(NeedleMove.score > 70) {
+        else if(NeedleMove.score > 80) { // 95, 90, 85
             rank = 2;
             CandleLight.rectTransform.anchoredPosition = new Vector2(447.7f, 15.1f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(447.7f, -22.9f);
         }
-        else if(NeedleMove.score > 50) {
+        else if(NeedleMove.score > 60) { // 80, 75, 70, 65
             rank = 3;
             CandleLight.rectTransform.anchoredPosition = new Vector2(675f, -81.6f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(675f, -119.6f);
-        } else {
+        } else {                         // 60, 55, 50 ... 0
             rank = 4;
             CandleLight.rectTransform.anchoredPosition = new Vector2(853f, -167f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(853f, -205f);

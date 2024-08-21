@@ -37,6 +37,8 @@ public class NeedleMove : MonoBehaviour
 
     void Start()
     {
+        NeedleMove.score = 0;
+
         currentPositionX = transform.localPosition.x;
         currentPositionY = transform.localPosition.y;
 
@@ -58,11 +60,11 @@ public class NeedleMove : MonoBehaviour
             {
                 switch (j)
                 {
-                    case 0: partsPositionX = -5.84f; break;
-                    case 1: partsPositionX = -2.99f; break;
-                    case 2: partsPositionX = -0.35f; break;
-                    case 3: partsPositionX = 2.22f; break;
-                    case 4: partsPositionX = 4.82f; break;
+                    case 0: partsPositionX = -5.8f; break;
+                    case 1: partsPositionX = -3.08f; break;
+                    case 2: partsPositionX = -0.42f; break;
+                    case 3: partsPositionX = 2.3f; break;
+                    case 4: partsPositionX = 4.9f; break;
                     default: Debug.Log("i가 0~4가 아님"); break;
                 }
                 if (i==0) {
