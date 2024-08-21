@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: SlotMachineTop
+    uniqueID: 4230095319
+    locked: 0
   - name: back
     uniqueID: 2029835307
     locked: 0

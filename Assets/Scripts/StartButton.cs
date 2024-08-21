@@ -12,14 +12,23 @@ public class StartButton : MonoBehaviour
     // Animator CherryBombAnimation;
     public Animator CherryBombAnimation;
     public GameObject cherryBomb;
+    public Animator CherryBombBurnAnimation;
+    public GameObject cherryBombBurn;
 
     public void StartButtonClickHandler()
     {
         Debug.Log("Click StartButton");
+        StartCoroutine(Bomb());
+    }
+
+    IEnumerator Bomb() {
+        cherryBombBurn.SetActive(true);
+        CherryBombBurnAnimation.Play("CherryBombBurnAnimation");
+        yield return new WaitForSeconds(2f);
         cherryBomb.SetActive(true);
         CherryBombAnimation.Play("CherryBombAnimation");
-        Invoke("LoadPlayScene", 0.5f);
-        // cherryBomb.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        LoadPlayScene();
     }
 
     public void LoadPlayScene()
