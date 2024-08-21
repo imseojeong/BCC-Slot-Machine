@@ -54,28 +54,28 @@ public class ScoreButton : MonoBehaviour
 
         // candle.SetActive(true) 기다리기
         yield return new WaitForSeconds(0.00001f);
-        if(NeedleMove.score == 100) {
+        if(GameManager.score == 100) {
             rank = 1;
             CandleLight.rectTransform.anchoredPosition = new Vector2(184f, 111f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(184f, 73f);
         }
-        else if(NeedleMove.score > 80) { // 95, 90, 85
+        else if(GameManager.score > 80) { // 95, 90, 85
             rank = 2;
             CandleLight.rectTransform.anchoredPosition = new Vector2(447.7f, 15.1f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(447.7f, -22.9f);
         }
-        else if(NeedleMove.score > 60) { // 80, 75, 70, 65
+        else if(GameManager.score > 65) { // 80, 75, 70
             rank = 3;
             CandleLight.rectTransform.anchoredPosition = new Vector2(675f, -81.6f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(675f, -119.6f);
-        } else {                         // 60, 55, 50 ... 0
+        } else {                         // 65 ... 0
             rank = 4;
             CandleLight.rectTransform.anchoredPosition = new Vector2(853f, -167f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(853f, -205f);
             cakeTopper.SetActive(true);
         }
         // 점수 출력
-        Debug.Log("Score: " + NeedleMove.score + ", Rank: " + rank +"등");
+        Debug.Log("Score: " + GameManager.score + ", Rank: " + rank +"등");
     }
 
     void Start()

@@ -3,9 +3,12 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static int score = 0;
+
     // 리스트 내부 요소의 순서를 섞는 메소드
     public static List<int> Shuffle(List<int> values)
     {
@@ -29,8 +32,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static void ScoreHandler(int currentRoomsScore)
+    {
+        score += currentRoomsScore;
+        Debug.Log("이번 라운드 점수: " + currentRoomsScore);
+        Debug.Log("총점: " + score);
+    }
 
-        
+    public static IEnumerator SetTimeOutMoveOnToNextRound(float sec)
+    {
+        float waitPartsMovingSec = sec - sec/3;
+
+        // 3분의 1초 기다렸다가 파츠들 아래로 내려가게 하는 코드
+        yield return new WaitForSeconds(waitPartsMovingSec);
+        NeedleMove.isPartsMoving = true;
+
+        //machineStoppedDuration(1초) 기다린 후에 실행되는 코드
+        yield return new WaitForSeconds(sec-waitPartsMovingSec);
+        NeedleMove.isMachineStopped = false;
+        NeedleMove.isPartsMoving = false;
+         if(NeedleMove.roundCount==5) {
+            SceneManager.LoadScene("Score Scene");
+        }
+    }
 
 
     void Start()

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManagement;
 
 public class NeedleMove : MonoBehaviour
 {
@@ -12,11 +12,11 @@ public class NeedleMove : MonoBehaviour
     [SerializeField]
     float direction; // 이동 속도[숫자]+방향[+-부호] / 숫자 커질 수록 속도 빨라짐
 
-    bool isMachineStopped = false;
-    bool isPartsMoving = false;
+    public static bool isMachineStopped = false;
+    public static bool isPartsMoving = false;
     int currentRoomsScore = 0;
-    public static int score = 0;
-    int roundCount = 0;
+    // public static int score = 0;
+    public static int roundCount = 0;
     float partsPositionX = 0;
     float partsPositionY = 4.0f;
 
@@ -37,7 +37,7 @@ public class NeedleMove : MonoBehaviour
 
     void Start()
     {
-        NeedleMove.score = 0;
+        GameManager.score = 0;
 
         currentPositionX = transform.localPosition.x;
         currentPositionY = transform.localPosition.y;
@@ -150,35 +150,10 @@ public class NeedleMove : MonoBehaviour
                 break;
             }
         }
-        ScoreHandler(currentRoomsScore);
+        GameManager.ScoreHandler(currentRoomsScore);
         roundCount++;
         Debug.Log("Round " + roundCount);
         Debug.Log("_______________");
-        StartCoroutine(SetTimeOutMoveOnToNextRound(machineStoppedDuration));
-    }
-
-    IEnumerator SetTimeOutMoveOnToNextRound(float sec)
-    {
-        float waitPartsMovingSec = sec - sec/3;
-
-        // 3분의 1초 기다렸다가 파츠들 아래로 내려가게 하는 코드
-        yield return new WaitForSeconds(waitPartsMovingSec);
-        isPartsMoving = true;
-
-        //machineStoppedDuration(1초) 기다린 후에 실행되는 코드
-        yield return new WaitForSeconds(sec-waitPartsMovingSec);
-        isMachineStopped = false;
-        isPartsMoving = false;
-         if(roundCount==5) {
-            SceneManager.LoadScene("Score Scene");
-        }
-    }
-
-    // 각 라운드별 점수 더해서 총점 계산하는 코드
-    void ScoreHandler(int currentRoomsScore)
-    {
-        score += currentRoomsScore;
-        Debug.Log("이번 라운드 점수: " + currentRoomsScore);
-        Debug.Log("총점: " + score);
+        StartCoroutine(GameManager.SetTimeOutMoveOnToNextRound(machineStoppedDuration));
     }
 }
