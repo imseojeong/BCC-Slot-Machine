@@ -6,12 +6,16 @@ using UnityEngine.EventSystems;
 
 public class Lever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    AudioSource clickSound;
+
     float currentPositionX;
     float currentPositionY;
     float currentPositionZ;
 
     void Start()
     {
+        clickSound = GetComponent<AudioSource>();
+
         currentPositionX = transform.localPosition.x;
         currentPositionY = transform.localPosition.y;
         currentPositionZ = transform.localPosition.z;
@@ -24,6 +28,7 @@ public class Lever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     //레버 클릭하면 실행되는 메소드
     public void LeverClickHandler() {
+        clickSound.Play();
         StartCoroutine(InActiveLeverButton());
     }
 

@@ -9,7 +9,6 @@ public class StartButton : MonoBehaviour
     , IPointerEnterHandler
     , IPointerExitHandler
 {
-    // Animator CherryBombAnimation;
     public Animator CherryBombAnimation;
     public GameObject cherryBomb;
     public Animator CherryBombBurnAnimation;
@@ -27,12 +26,7 @@ public class StartButton : MonoBehaviour
         yield return new WaitForSeconds(2f);
         cherryBomb.SetActive(true);
         CherryBombAnimation.Play("CherryBombAnimation");
-        yield return new WaitForSeconds(0.5f);
-        LoadPlayScene();
-    }
-
-    public void LoadPlayScene()
-    {
+        yield return new WaitForSeconds(1.125f);
         SceneManager.LoadScene("Play Scene");
     }
 

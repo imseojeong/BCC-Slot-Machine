@@ -10,10 +10,19 @@ public class RestartButton : MonoBehaviour
     , IPointerEnterHandler
     , IPointerExitHandler
 {
+    AudioSource clickSoundBig;
+
     public void RestartButtonClickHandler()
     {
-        SceneManager.LoadScene("Start Scene");
+        clickSoundBig.Play(0);
         Debug.Log("Click RestartButton");
+        StartCoroutine(SetTimeOutClickSoundBig());
+    }
+
+    IEnumerator SetTimeOutClickSoundBig()
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Start Scene");
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -30,6 +39,7 @@ public class RestartButton : MonoBehaviour
 
     void Start()
     {
+        clickSoundBig = GetComponent<AudioSource>();
         // 투명배경 무시
         GetComponent<Image>().alphaHitTestMinimumThreshold = 0.001f;
     }
