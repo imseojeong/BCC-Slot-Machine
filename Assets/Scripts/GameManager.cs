@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static int score = 0;
+    public static String[] resultArr = new string[5];
 
     // 리스트 내부 요소의 순서를 섞는 메소드
     public static List<int> Shuffle(List<int> values)

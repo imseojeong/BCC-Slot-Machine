@@ -99,7 +99,7 @@ public class ScoreButton : MonoBehaviour
         cakeTopper.SetActive(false);
         lightEffect.SetActive(false);
 
-        targetPosition = new Vector3(-80, transform.position.y, 0);
+        targetPosition = new Vector3(-1, transform.position.y, 0);
     }
 
     void Update()

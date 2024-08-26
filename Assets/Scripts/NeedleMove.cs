@@ -138,7 +138,8 @@ public class NeedleMove : MonoBehaviour
                 }
                 // 선택된 파츠 아래 쿠션에 띄우기
                 Object prefab = Resources.Load("Prefabs/"+roundCount.ToString()+"-"+currentRoomsScore.ToString());
-                Debug.Log(roundCount.ToString()+"-"+currentRoomsScore.ToString());
+                GameManager.resultArr[roundCount] = roundCount.ToString()+"-"+currentRoomsScore.ToString();
+                Debug.Log(GameManager.resultArr[roundCount]);
                 Instantiate(prefab);
                 break;
             }
