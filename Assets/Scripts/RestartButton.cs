@@ -11,6 +11,7 @@ public class RestartButton : MonoBehaviour
     , IPointerExitHandler
 {
     AudioSource clickSoundBig;
+    public static GameObject[] partTrans = new GameObject[5];
 
     public void RestartButtonClickHandler()
     {

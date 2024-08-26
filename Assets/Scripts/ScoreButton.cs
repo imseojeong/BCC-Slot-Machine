@@ -21,6 +21,7 @@ public class ScoreButton : MonoBehaviour
     public GameObject cakeTopper;
     public GameObject lightEffect;
     bool isScoreButtonClicked = false;
+    public static bool isLightOn = false;
 
     int rank = 0;
 
@@ -51,6 +52,7 @@ public class ScoreButton : MonoBehaviour
         
         // 불 켜짐
         yield return new WaitForSeconds(1.5f);
+        isLightOn = true;
         door.SetActive(false);
         background.SetActive(false);
         candle.SetActive(true);
@@ -59,7 +61,8 @@ public class ScoreButton : MonoBehaviour
 
         // candle.SetActive(true) 기다리기
         yield return new WaitForSeconds(0.00001f);
-        if(GameManager.score == 100) {
+        GameManager.AddSelectedParts();
+        if (GameManager.score == 100) {
             rank = 1;
             CandleLight.rectTransform.anchoredPosition = new Vector2(184f, 111f);
             LightEffect.rectTransform.anchoredPosition = new Vector2(184f, 73f);

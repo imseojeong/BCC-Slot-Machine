@@ -128,14 +128,7 @@ public class NeedleMove : MonoBehaviour
             {
                 Debug.Log(i+1 + " 번째 칸에 멈춤");
                 currentRoomsScore = score2D[roundCount, i];
-                Vector2 clonePosition = new Vector2(0, -3.1f);
-                switch (roundCount) {
-                    case 0: 
-                    case 1: clonePosition = new Vector2(-5.72f, -3.1f); break;
-                    case 2: 
-                    case 3: clonePosition = new Vector2(-0.43f, -3.1f); break;
-                    case 4: clonePosition = new Vector2(4.81f, -3.1f); break;
-                }
+   
                 // 선택된 파츠 아래 쿠션에 띄우기
                 Object prefab = Resources.Load("Prefabs/"+roundCount.ToString()+"-"+currentRoomsScore.ToString());
                 GameManager.resultArr[roundCount] = roundCount.ToString()+"-"+currentRoomsScore.ToString();
