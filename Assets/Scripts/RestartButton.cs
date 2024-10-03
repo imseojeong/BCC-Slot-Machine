@@ -44,4 +44,12 @@ public class RestartButton : MonoBehaviour
         // 투명배경 무시
         GetComponent<Image>().alphaHitTestMinimumThreshold = 0.001f;
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("스페이스 키 누름");
+            SceneManager.LoadScene("Start Scene");
+        }
+    }
 }
