@@ -82,8 +82,10 @@ public class ScoreButton : MonoBehaviour
             LightEffect.rectTransform.anchoredPosition = new Vector2(853f, -205f);
             cakeTopper.SetActive(true);
         }
+        Envelope.anim.Play("Envelope_open");
         // 점수 출력
         Debug.Log("Score: " + GameManager.score + ", Rank: " + rank +"등");
+
     }
 
     void Start()
