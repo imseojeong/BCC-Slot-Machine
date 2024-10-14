@@ -52,6 +52,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(sec-waitPartsMovingSec);
         NeedleMove.isMachineStopped = false;
         NeedleMove.isPartsMoving = false;
+        NeedleMove.stopCalled = false;
+        NeedleMove.deltaCount = 0;
+
+        // 5라운드 끝나면 결과화면으로 가기
          if(NeedleMove.roundCount==5) {
             SceneManager.LoadScene("Score Scene");
         }

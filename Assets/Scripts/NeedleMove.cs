@@ -24,6 +24,9 @@ public class NeedleMove : MonoBehaviour
     float partsPosYMiddle = 1.1f;
     float partsPosYBottom = -2.2f;
 
+    public static float deltaCount;
+    public static bool stopCalled = false;
+
     // 점수 리스트 (섞기 전)
     List<int> score_s = new List<int>() { 0, 5, 10, 15, 20 };
     // 모든 라운드(5라운드)의 점수 리스트를 섞은 후 넣어줄 5x5 2차원 배열
@@ -108,6 +111,14 @@ public class NeedleMove : MonoBehaviour
         }
         //Needle의 위치를 계산된 현재위치로 처리
         transform.localPosition = new Vector3(currentPositionX, currentPositionY, 0);
+
+        // 3초동안 안 고르면 자동선택
+        deltaCount += Time.deltaTime;
+        Debug.Log(deltaCount);
+        if(!stopCalled && deltaCount>3.0) {
+            stopCalled = true;
+            NeedleStopHandler();
+        }
     }
 
     // 레버를 클릭하면 실행되는 메소드
