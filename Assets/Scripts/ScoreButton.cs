@@ -13,6 +13,8 @@ public class ScoreButton : MonoBehaviour
     Animator anim;
     AudioSource keySound;
     AudioSource doorSound;
+    AudioSource lightSwitchSound;
+    AudioSource shalalaSound;
 
     public GameObject background;
     public GameObject door;
@@ -50,18 +52,24 @@ public class ScoreButton : MonoBehaviour
         doorSound.Play(0);
         Debug.Log("Play doorOpen");
         
-        // 불 켜짐
+        // 불 켜짐, 편지지 열림
         yield return new WaitForSeconds(1.5f);
         isLightOn = true;
+        lightSwitchSound.Play(0);
+        shalalaSound.Play(0);
         door.SetActive(false);
         background.SetActive(false);
+        GameManager.AddSelectedParts();
+        Envelope.anim.Play("Envelope_open");
+
+        // 촛불 켜짐
+        yield return new WaitForSeconds(1f);
         candle.SetActive(true);
         lightEffect.SetActive(true);
         Debug.Log("Play candleLight");
 
         // candle.SetActive(true) 기다리기
         yield return new WaitForSeconds(0.00001f);
-        GameManager.AddSelectedParts();
         if (GameManager.score == 100) {
             rank = 1;
             CandleLight.rectTransform.anchoredPosition = new Vector2(184f, 111f);
@@ -82,7 +90,6 @@ public class ScoreButton : MonoBehaviour
             LightEffect.rectTransform.anchoredPosition = new Vector2(853f, -205f);
             cakeTopper.SetActive(true);
         }
-        Envelope.anim.Play("Envelope_open");
         // 점수 출력
         Debug.Log("Score: " + GameManager.score + ", Rank: " + rank +"등");
 
@@ -93,7 +100,12 @@ public class ScoreButton : MonoBehaviour
         // 투명배경 무시
         GetComponent<Image>().alphaHitTestMinimumThreshold = 0.001f;
         anim = GetComponent<Animator>();
-        keySound = GetComponent<AudioSource>();
+
+        // var audioSources = GetComponent<AudioSource>();
+        AudioSource[] aSources = GetComponents<AudioSource>();
+        keySound = aSources[0];
+        lightSwitchSound = aSources[1];
+        shalalaSound = aSources[2];
         doorSound = door.GetComponent<AudioSource>();
 
         background.SetActive(true);
