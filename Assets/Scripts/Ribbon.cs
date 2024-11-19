@@ -141,14 +141,18 @@ public class Ribbon : MonoBehaviour
 
         if(isScoreDisplayed) return; // 편지지 모션 두 번 실행 방지
 
+        Vector3 letterPaperPosition = letterPaper.transform.position;
+        Vector3 scoreTextPosition = scoreText.transform.position;
+        
         if(isEnvelopeOpened) {
-            letterPaper.transform.position += new Vector3(0, 10.0f * Time.deltaTime, 0);
-            scoreText.transform.position += new Vector3(0, 10.0f * Time.deltaTime, 0);
+            letterPaper.transform.position = Vector3.MoveTowards(letterPaperPosition, new Vector3(letterPaperPosition.x, letterPaperPosition.y + 0.2f, 0), Time.deltaTime * 10000);
+            scoreText.transform.position = Vector3.MoveTowards(scoreTextPosition, new Vector3(scoreTextPosition.x, scoreTextPosition.y + 0.2f, 0), Time.deltaTime * 10000);
         }
 
+
         if(!isLetterPaperMoved) return; //편지지 아직 위로 안움직엿으면 리턴
-        letterPaper.transform.position -= new Vector3(0, 10.0f * Time.deltaTime, 0);
-        scoreText.transform.position -= new Vector3(0, 10.0f * Time.deltaTime, 0);
+        letterPaper.transform.position = Vector3.MoveTowards(letterPaperPosition, new Vector3(letterPaperPosition.x, letterPaperPosition.y - 0.2f, 0), Time.deltaTime * 10000);
+        scoreText.transform.position = Vector3.MoveTowards(scoreTextPosition, new Vector3(scoreTextPosition.x, scoreTextPosition.y - 0.2f, 0), Time.deltaTime * 10000);
 
         if(!(scoreTextColorAlpha<=255 -scoreTextColorAlphaVelocity)) return;
         scoreTextColorAlpha += scoreTextColorAlphaVelocity;
