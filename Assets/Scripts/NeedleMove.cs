@@ -79,7 +79,7 @@ public class NeedleMove : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(!isMachineStopped) {
             currentPositionX += Time.deltaTime * direction;
