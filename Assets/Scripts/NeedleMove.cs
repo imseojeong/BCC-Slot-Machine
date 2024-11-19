@@ -63,6 +63,7 @@ public class NeedleMove : MonoBehaviour
             {
                 switch (j)
                 {
+                    //TODO: 숫자 널널하게(오류방지)
                     case 0: partsPositionX = -5.8f; break;
                     case 1: partsPositionX = -3.08f; break;
                     case 2: partsPositionX = -0.42f; break;

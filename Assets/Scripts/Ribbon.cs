@@ -22,6 +22,7 @@ public class Ribbon : MonoBehaviour
     AudioSource envelopeSound;
     AudioSource checkSound;
     RectTransform rectTransform;
+    public float ribbonScale = 1.0f;
     
     public static bool isRibbonClicked;
     public static bool isEnvelopeOpened;
@@ -31,8 +32,8 @@ public class Ribbon : MonoBehaviour
     byte scoreTextColorAlpha = 0;
     public byte scoreTextColorAlphaVelocity = 5;
 
-    public int score2ndMin = 90; // 2등: 95, 90, 85
-    public int score3rdMin = 70;  // 3등: 80, 75, 70
+    public int score2ndMin = 90; // 2등: 95, 90
+    public int score3rdMin = 70;  // 3등: 85, 80, 75, 70
 
     int rank = 0;
 
@@ -136,6 +137,8 @@ public class Ribbon : MonoBehaviour
     }
 
     void FixedUpdate() {
+        rectTransform.localScale = new Vector2(ribbonScale, ribbonScale);
+
         if(isScoreDisplayed) return; // 편지지 모션 두 번 실행 방지
 
         if(isEnvelopeOpened) {
