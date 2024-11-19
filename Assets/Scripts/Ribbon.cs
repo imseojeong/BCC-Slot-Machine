@@ -23,8 +23,11 @@ public class Ribbon : MonoBehaviour
     AudioSource checkSound;
     RectTransform rectTransform;
     public float ribbonScale = 1.0f;
+    public float ribbonAngle = 0;
+    public float ribbonVelocity = 0.5f;
     
     public static bool isRibbonClicked;
+    public static bool isRibbonHovered;
     public static bool isEnvelopeOpened;
     public static bool isLetterPaperMoved;
     public static bool isScoreDisplayed;
@@ -37,16 +40,19 @@ public class Ribbon : MonoBehaviour
 
     int rank = 0;
 
+    // 마우스오버 시 리본 커지는 이벤트
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Enter ribbon");
-        rectTransform.localScale = new Vector2(1.02f, 1.02f);
+        //rectTransform.localScale = new Vector2(1.0f, 1.0f);
+        rectTransform.rotation = Quaternion.Euler(0f, 0f, 0f); 
+        isRibbonHovered = true;
         checkSound.Play(0);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("Exit ribbon");
-        rectTransform.localScale = new Vector2(1f, 1f);
+        isRibbonHovered = false;
     }
 
     public void RibbonClickHandler()
@@ -125,6 +131,7 @@ public class Ribbon : MonoBehaviour
         checkSound = aSources[1];
 
         isRibbonClicked = false;
+        isRibbonHovered = false;
         isEnvelopeOpened = false;
         isScoreDisplayed = false;
 
@@ -137,7 +144,20 @@ public class Ribbon : MonoBehaviour
     }
 
     void FixedUpdate() {
-        rectTransform.localScale = new Vector2(ribbonScale, ribbonScale);
+        /* if(!isRibbonHovered) {
+            if(ribbonScale<1.0f||ribbonScale>1.05f){
+                ribbonVelocity *= -1;
+            }
+            //ribbonScale += Time.deltaTime * ribbonVelocity;
+            //rectTransform.localScale = new Vector2(ribbonScale, ribbonScale);
+        }  */
+        if(!isRibbonHovered) {
+            if(ribbonAngle<-5.0f||ribbonAngle>5.0f){
+                ribbonVelocity *= -1;
+            }
+            ribbonAngle += Time.deltaTime * ribbonVelocity;  
+            rectTransform.rotation = Quaternion.Euler(0f, 0f, ribbonAngle);  
+        } 
 
         if(isScoreDisplayed) return; // 편지지 모션 두 번 실행 방지
 
@@ -156,8 +176,5 @@ public class Ribbon : MonoBehaviour
         scoreTextColorAlpha += scoreTextColorAlphaVelocity;
         scoreText.faceColor = new Color32(176, 112, 140, scoreTextColorAlpha);
 
-        
-        
     }
-
 }
