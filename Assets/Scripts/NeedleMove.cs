@@ -34,7 +34,7 @@ public class NeedleMove : MonoBehaviour
     public GameObject[,] parts2D = new GameObject[5,5];
 
 
-    public float machineStoppedDuration = 1.0f;
+    public static float machineStoppedDuration = 1.0f;
 
 
     void Start()
