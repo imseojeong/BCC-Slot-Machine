@@ -28,6 +28,7 @@ public class Ribbon : MonoBehaviour
     
     public static bool isRibbonClicked;
     public static bool isRibbonHovered;
+    public static bool isRibbonStopped;
     public static bool isEnvelopeOpened;
     public static bool isLetterPaperMoved;
     public static bool isScoreDisplayed;
@@ -120,6 +121,10 @@ public class Ribbon : MonoBehaviour
         cakes[rank-1].GetComponent<Image>().material= null;
     }
 
+    public void ToggleRibbonStopped() {
+        isRibbonStopped = !isRibbonStopped;
+    }
+
     void Start()
     {
         // 투명부분 무시
@@ -132,6 +137,7 @@ public class Ribbon : MonoBehaviour
 
         isRibbonClicked = false;
         isRibbonHovered = false;
+        isRibbonStopped = false;
         isEnvelopeOpened = false;
         isScoreDisplayed = false;
 
@@ -141,9 +147,12 @@ public class Ribbon : MonoBehaviour
         envelopeTopBase.GetComponent<Image>().enabled = false;
 
         scoreText.faceColor = new Color32(176, 112, 140, 0);
+
+        InvokeRepeating("ToggleRibbonStopped",2,1.2f);
     }
 
     void FixedUpdate() {
+        // 커졌다 작아지는 모션
         /* if(!isRibbonHovered) {
             if(ribbonScale<1.0f||ribbonScale>1.05f){
                 ribbonVelocity *= -1;
@@ -151,13 +160,17 @@ public class Ribbon : MonoBehaviour
             //ribbonScale += Time.deltaTime * ribbonVelocity;
             //rectTransform.localScale = new Vector2(ribbonScale, ribbonScale);
         }  */
-        if(!isRibbonHovered) {
-            if(ribbonAngle<-5.0f||ribbonAngle>5.0f){
-                ribbonVelocity *= -1;
-            }
-            ribbonAngle += Time.deltaTime * ribbonVelocity;  
-            rectTransform.rotation = Quaternion.Euler(0f, 0f, ribbonAngle);  
-        } 
+
+        // 왔다갔다 회전
+        if(!isRibbonStopped) {
+            if(!isRibbonHovered) {
+                if(ribbonAngle < -5.0f || ribbonAngle > 5.0f){
+                    ribbonVelocity *= -1;
+                }
+                ribbonAngle += Time.deltaTime * ribbonVelocity;
+                rectTransform.rotation = Quaternion.Euler(0f, 0f, ribbonAngle);  
+            } 
+        }
 
         if(isScoreDisplayed) return; // 편지지 모션 두 번 실행 방지
 
