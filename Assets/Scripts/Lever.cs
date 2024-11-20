@@ -37,7 +37,7 @@ public class Lever : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         // 레버 버튼 비활성화
         GetComponent<Button>().interactable = false;
         // 1초 기다림
-        yield return new WaitForSeconds(NeedleMove.machineStoppedDuration);
+        yield return new WaitForSeconds(NeedleMove.machineStoppedDuration + 0.1f);
         // 레버 버튼 활성화
         GetComponent<Button>().interactable = true;
     }
