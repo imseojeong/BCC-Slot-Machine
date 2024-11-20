@@ -168,9 +168,11 @@ public class Ribbon : MonoBehaviour
                     ribbonVelocity *= -1;
                 }
                 ribbonAngle += Time.deltaTime * ribbonVelocity;
-                rectTransform.rotation = Quaternion.Euler(0f, 0f, ribbonAngle);  
             } 
+        } else {
+            ribbonAngle = 0;
         }
+        rectTransform.rotation = Quaternion.Euler(0f, 0f, ribbonAngle);
 
         if(isScoreDisplayed) return; // 편지지 모션 두 번 실행 방지
 
