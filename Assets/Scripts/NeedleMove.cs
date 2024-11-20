@@ -95,19 +95,19 @@ public class NeedleMove : MonoBehaviour
                 parts2D[roundCount-1, i].transform.position = Vector3.MoveTowards(parts2D[roundCount-1, i].transform.position, new Vector3(parts2D[roundCount, i].transform.position.x, partsPosYBottom, 0), 15.0f * Time.deltaTime);
             }
         }
-        if (currentPositionX >= rightMax)
+        if (currentPositionX >= rightMax-0.2f)
         {
             //currentPositionX가 rightMax보다 크거나 같다면
             //이동 속도+방향에 -1을 곱해 이동 방향을 바꿔주고 현재위치를 rightMax으로 설정
             direction *= -1;
-            currentPositionX = rightMax;
+            currentPositionX = rightMax - 0.2f;
         }
-        else if (currentPositionX <= leftMax)
+        else if (currentPositionX <= leftMax+0.2f)
         {
             //currentPositionX가 leftMax보다 크거나 같다면
             //이동 속도+방향에 -1을 곱해 이동 방향을 바꿔주고 현재위치를 leftMax으로 설정
             direction *= -1;
-            currentPositionX = leftMax;
+            currentPositionX = leftMax + 0.2f;
         }
         //Needle의 위치를 계산된 현재위치로 처리
         transform.localPosition = new Vector3(currentPositionX, currentPositionY, 0);
