@@ -148,7 +148,7 @@ public class Ribbon : MonoBehaviour
 
         scoreText.faceColor = new Color32(176, 112, 140, 0);
 
-        InvokeRepeating("ToggleRibbonStopped",2,1.2f);
+        InvokeRepeating("ToggleRibbonStopped", 0.1f, 1.2f);
     }
 
     void FixedUpdate() {
