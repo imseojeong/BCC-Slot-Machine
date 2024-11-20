@@ -27,13 +27,18 @@ public class ScoreButton : MonoBehaviour
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Enter scoreButton");
-        GetComponent<RectTransform>().localScale = new Vector2(0.42f, 0.42f);
+        if(!isScoreButtonClicked){
+            Debug.Log("Enter scoreButton");
+            GetComponent<RectTransform>().localScale = new Vector2(0.42f, 0.42f);
+        }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Exit scoreButton");
-        GetComponent<RectTransform>().localScale = new Vector2(0.40908f, 0.40908f);
+        if(!isScoreButtonClicked){
+            Debug.Log("Exit scoreButton");
+            GetComponent<RectTransform>().localScale = new Vector2(0.40908f, 0.40908f);
+           
+        }
     }
 
     // 열쇠 클릭 시 열쇠, 문, 배경 비활성화
@@ -59,7 +64,7 @@ public class ScoreButton : MonoBehaviour
 
         // 문 열림
         yield return new WaitForSeconds(1.0f);
-        transform.position = new Vector3(-1300, 0, 0); //TODO: enable/disable
+        gameObject.GetComponent<Image>().enabled = false;
         halfDoor.GetComponent<Image>().enabled = false;
         door.GetComponent<Animator>().Play("door_open");
         doorSound.Play(0);
